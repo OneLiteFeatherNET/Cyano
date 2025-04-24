@@ -22,14 +22,14 @@
   ],
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "patch"
-      ],
+      "matchManagers": ["regex"],
+      "matchPackageNames": ["net.minestom:minestom-snapshots"],
       "automerge": true
     },
     {
-      "matchManagers": ["regex"],
-      "matchPackageNames": ["net.minestom:minestom-snapshots"],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "automerge": true
     }
   ]
