@@ -24,8 +24,10 @@
   "packageRules": [
     {
       "matchManagers": ["regex"],
-      "matchPackageNames": ["net.minestom:minestom-snapshots"],
-      "automerge": true
+      "matchFiles": ["^settings\\.gradle\\.kts$"],
+      "matchPackageNames": ["Minestom/Minestom"],
+      "automerge": false,
+      "prPriority": 10
     },
     {
       "matchUpdateTypes": [
