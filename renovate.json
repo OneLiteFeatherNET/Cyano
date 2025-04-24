@@ -29,7 +29,7 @@
     },
     {
       "matchManagers": ["regex"],
-      "matchPackageNames": ["Minestom/Minestom"],
+      "matchPackageNames": ["net.minestom:minestom-snapshots"],
       "automerge": true
     }
   ]
