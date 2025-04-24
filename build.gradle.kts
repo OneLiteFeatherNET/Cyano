@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "net.onelitefeather.cyano"
-version = "1.0-SNAPSHOT"
+version = "0.1.0"
 
 java {
     toolchain {
@@ -14,10 +14,10 @@ java {
     }
 }
 
-
 dependencies {
-    implementation(libs.junit.params)
-    compileOnly(libs.minestom)
+    api(libs.minestom)
+    compileOnly(libs.junit.params)
+    compileOnly(libs.junit.api)
 }
 
 tasks {
