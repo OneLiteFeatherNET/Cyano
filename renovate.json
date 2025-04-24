@@ -8,8 +8,9 @@
     "Renovate"
   ],
   "rebaseWhen": "conflicted",
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["^settings\\.gradle\\.kts$"],
       "matchStrings": [
         "version\\(\\s*\"minestom\"\\s*,\\s*\"(?<currentValue>[0-9a-f]{7,40})\"\\s*\\)"
