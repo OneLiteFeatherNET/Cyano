@@ -10,6 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Method;
 
+@Deprecated(forRemoval = true, since = "Please use the MicrotusExtension instead")
 @ExtendWith(EnvTest.EnvParameterResolver.class)
 @ExtendWith(EnvTest.EnvBefore.class)
 @ExtendWith(EnvTest.EnvCleaner.class)
