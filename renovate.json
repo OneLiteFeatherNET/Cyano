@@ -8,26 +8,10 @@
     "Renovate"
   ],
   "rebaseWhen": "conflicted",
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["^settings\\.gradle\\.kts$"],
-      "matchStrings": [
-        "version\\(\\s*\"minestom\"\\s*,\\s*\"(?<currentValue>[0-9a-f]{7,40})\"\\s*\\)"
-      ],
-      "datasourceTemplate": "git-refs",
-      "packageNameTemplate": "https://github.com/Minestom/Minestom",
-      "depNameTemplate": "Minestom/Minestom",
-      "versioningTemplate": "loose"
-    }
-  ],
   "packageRules": [
     {
-      "matchManagers": ["regex"],
-      "matchFiles": ["^settings\\.gradle\\.kts$"],
-      "matchPackageNames": ["Minestom/Minestom"],
-      "automerge": false,
-      "prPriority": 10
+      "matchPackageNames": ["net.minestom:minestom-snapshots"],
+      "enabled": false
     },
     {
       "matchUpdateTypes": [
