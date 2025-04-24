@@ -10,12 +10,12 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
- * The {@link MinestomTestExtension} class extends {@link TypeBasedParameterResolver<Env>} and implements {@link InvocationInterceptor}.
+ * The {@link MicrotusExtension} class extends {@link TypeBasedParameterResolver<Env>} and implements {@link InvocationInterceptor}.
  * This extension is used to resolve parameters of type {@link Env} and to intercept test method invocations.
  *
  * @since 1.5.0
  */
-public class MinestomTestExtension extends TypeBasedParameterResolver<Env> implements InvocationInterceptor {
+public class MicrotusExtension extends TypeBasedParameterResolver<Env> implements InvocationInterceptor {
 
     /**
      * Resolves the parameter of type {@link Env}.
