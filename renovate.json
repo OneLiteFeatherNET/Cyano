@@ -8,23 +8,28 @@
     "Renovate"
   ],
   "rebaseWhen": "conflicted",
-  "packageRules": [
+  "regexManagers": [
     {
-      "customManagers": [
-        {
-          "customType": "regex",
-          "matchStrings": ["version(\"minestom\", \"(?<currentDigest>.*?)\""],
-          "currentValueTemplate": "master",
-          "depNameTemplate": "minestom",
-          "packageNameTemplate": "https://github.com/Minestom/Minestom",
-          "datasourceTemplate": "git-refs"
-        }
-      ]
-    },
+      "fileMatch": ["^settings\\.gradle\\.kts$"],
+      "matchStrings": [
+        "version\\(\\s*\"minestom\"\\s*,\\s*\"(?<currentValue>[0-9a-f]{7,40})\"\\s*\\)"
+      ],
+      "datasourceTemplate": "git-refs",
+      "packageNameTemplate": "https://github.com/Minestom/Minestom",
+      "depNameTemplate": "Minestom/Minestom",
+      "versioningTemplate": "loose"
+    }
+  ],
+  "packageRules": [
     {
       "matchUpdateTypes": [
         "patch"
       ],
+      "automerge": true
+    },
+    {
+      "matchManagers": ["regex"],
+      "matchPackageNames": ["Minestom/Minestom"],
       "automerge": true
     }
   ]
