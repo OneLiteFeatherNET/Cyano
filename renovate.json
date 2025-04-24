@@ -10,6 +10,18 @@
   "rebaseWhen": "conflicted",
   "packageRules": [
     {
+      "customManagers": [
+        {
+          "customType": "regex",
+          "matchStrings": ["version(\"minestom\", \"(?<currentDigest>.*?)\""],
+          "currentValueTemplate": "master",
+          "depNameTemplate": "minestom",
+          "packageNameTemplate": "https://github.com/Minestom/Minestom",
+          "datasourceTemplate": "git-refs"
+        }
+      ]
+    },
+    {
       "matchUpdateTypes": [
         "patch"
       ],
