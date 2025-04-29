@@ -5,8 +5,8 @@ plugins {
     jacoco
 }
 
-group = "net.onelitefeather.cyano"
-version = "0.1.0"
+group = "net.onelitefeather"
+version = "0.1.1"
 
 java {
     toolchain {
