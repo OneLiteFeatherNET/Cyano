@@ -2,11 +2,10 @@ plugins {
     java
     `java-library`
     `maven-publish`
-    jacoco
 }
 
 group = "net.onelitefeather"
-version = "0.1.1"
+version = "0.2.0"
 
 java {
     toolchain {
@@ -24,20 +23,6 @@ tasks {
     compileJava {
         options.encoding = "UTF-8"
         options.release.set(21)
-    }
-
-    compileTestJava {
-        options.encoding = "UTF-8"
-        options.release.set(21)
-    }
-
-    test {
-        finalizedBy(jacocoTestReport)
-        useJUnitPlatform()
-        jvmArgs("-Dminestom.inside-test=true")
-        testLogging {
-            events("passed", "skipped", "failed")
-        }
     }
 }
 
