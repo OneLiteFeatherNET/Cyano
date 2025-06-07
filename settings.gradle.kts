@@ -8,7 +8,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             version("minestom", "a1d1920a04")
-            version("junit-jupiter", "5.13.0")
+            version("junit-jupiter", "5.13.1")
 
             library("minestom","net.minestom", "minestom-snapshots").versionRef("minestom")
 
