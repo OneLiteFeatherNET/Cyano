@@ -1,5 +1,6 @@
 plugins {
     java
+    jacoco
     `java-library`
     `maven-publish`
 }
@@ -17,12 +18,25 @@ dependencies {
     api(libs.minestom)
     compileOnly(libs.junit.params)
     compileOnly(libs.junit.api)
+
+    testImplementation(libs.junit.api)
+    testImplementation(libs.junit.params)
+    testImplementation(libs.junit.platform.launcher)
+    testRuntimeOnly(libs.junit.engine)
 }
 
 tasks {
     compileJava {
         options.encoding = "UTF-8"
         options.release.set(21)
+    }
+
+    test {
+        useJUnitPlatform()
+        jvmArgs("-Dminestom.inside-test=true")
+        testLogging {
+            events("passed", "skipped", "failed")
+        }
     }
 }
 
