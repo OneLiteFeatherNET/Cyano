@@ -7,7 +7,7 @@ dependencyResolutionManagement {
 
     versionCatalogs {
         create("libs") {
-            version("minestom", "a1d1920a04")
+            version("minestom", "4fe2993057")
             version("junit", "5.13.2")
             version("junit.platform", "1.13.1")
 
@@ -17,7 +17,6 @@ dependencyResolutionManagement {
             library("junit.params", "org.junit.jupiter", "junit-jupiter-params").versionRef("junit")
             library("junit.engine", "org.junit.jupiter", "junit-jupiter-engine").versionRef("junit")
             library("junit.platform.launcher", "org.junit.platform", "junit-platform-launcher").versionRef("junit.platform")
-
 
         }
     }
