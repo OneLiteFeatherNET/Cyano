@@ -150,6 +150,15 @@ public interface Env {
     }
 
     /**
+     * Creates a new {@link Instance} which is empty and can be used in the test environment.
+     *
+     * @return the created instance
+     */
+    default @NotNull Instance createEmptyInstance() {
+        return process().instance().createInstanceContainer();
+    }
+
+    /**
      * Destroys the given {@link Instance} from the test environment.
      * Note: This method does not remove players from the instance.
      *
