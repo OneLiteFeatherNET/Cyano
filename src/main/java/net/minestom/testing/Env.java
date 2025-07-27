@@ -68,7 +68,10 @@ public interface Env {
      * Tracks a specific event type in the test environment.
      *
      * @param eventType the event type to track
+     * @param filter    the filter to apply to the event
+     * @param actor     the actor that is interested in the event
      * @param <E>       the event type
+     * @param <H>       the handler type
      * @return the {@link Collector} instance to use
      */
     <E extends Event, H> @NotNull Collector<E> trackEvent(@NotNull Class<E> eventType, @NotNull EventFilter<? super E, H> filter, @NotNull H actor);
@@ -93,6 +96,8 @@ public interface Env {
      * Ticks the {@link ServerProcess} until the given condition is met.
      *
      * @param condition the condition to check
+     * @param timeout   the maximum duration to wait for the condition to be met, or null for no timeout
+     * @return true if the condition was met, false if the timeout was reached
      */
     default boolean tickWhile(@NotNull BooleanSupplier condition, @Nullable Duration timeout) {
         var ticker = process().ticker();
