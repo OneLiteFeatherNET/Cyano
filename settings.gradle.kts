@@ -7,7 +7,7 @@ dependencyResolutionManagement {
 
     versionCatalogs {
         create("libs") {
-            version("minestom", "2025.07.27-1.21.8")
+            version("minestom", "2025.07.30-1.21.8")
             version("junit", "5.13.4")
             version("junit.platform", "1.13.4")
 
