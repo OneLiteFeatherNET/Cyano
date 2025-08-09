@@ -1,23 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "github>OneLiteFeatherNET/renovate:default(OneLiteFeatherNET/aves-maintainers)",
+    "github>OneLiteFeatherNET/renovate:minestom",
     ":semanticCommitsDisabled"
-  ],
-  "labels": [
-    "Renovate"
-  ],
-  "rebaseWhen": "conflicted",
-  "packageRules": [
-    {
-      "matchPackageNames": ["net.minestom:minestom"],
-      "versioning": "regex:^(?<major>\\d{4})\\.(?<minor>\\d{2})\\.(?<patch>\\d{2})(?<prerelease>[a-zA-Z]?)-(?<build>[A-Za-z0-9._]+)$"
-    },
-    {
-      "matchUpdateTypes": [
-        "patch"
-      ],
-      "automerge": true
-    }
   ]
 }
