@@ -4,7 +4,6 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.network.packet.server.ServerPacket;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * The {@link TestConnection} represents a connection from a player to a test server instance.
@@ -22,7 +21,7 @@ public interface TestConnection {
      * @param pos      the position to connect at
      * @return the connected player
      */
-    @NotNull Player connect(@NotNull Instance instance, @NotNull Pos pos);
+    Player connect(Instance instance, Pos pos);
 
     /**
      * Connects a player to the given instance at the default position (0, 0, 0).
@@ -30,7 +29,7 @@ public interface TestConnection {
      * @param instance the instance to connect to
      * @return the connected player
      */
-    default @NotNull Player connect(@NotNull Instance instance) {
+    default Player connect(Instance instance) {
         return connect(instance, Pos.ZERO);
     }
 
@@ -41,14 +40,14 @@ public interface TestConnection {
      * @param <T>  the type of the packet
      * @return a collector for the specified packet type
      */
-    <T extends ServerPacket> @NotNull Collector<T> trackIncoming(@NotNull Class<T> type);
+    <T extends ServerPacket> Collector<T> trackIncoming(Class<T> type);
 
     /**
      * Tracks incoming packets of the default type {@link ServerPacket}.
      *
      * @return a collector for the default packet type
      */
-    default @NotNull Collector<ServerPacket> trackIncoming() {
+    default Collector<ServerPacket> trackIncoming() {
         return trackIncoming(ServerPacket.class);
     }
 }

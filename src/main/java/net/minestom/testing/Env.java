@@ -8,11 +8,13 @@ import net.minestom.server.event.EventFilter;
 import net.minestom.server.instance.IChunkLoader;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
+import net.minestom.server.network.player.GameProfile;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
+import java.util.UUID;
 import java.util.function.BooleanSupplier;
 
 /**
@@ -46,7 +48,7 @@ public interface Env {
      * @return a new instance of {@link Env}
      */
     @Contract(value = "_ -> new", pure = true)
-    static @NotNull Env createInstance(@NotNull ServerProcess process) {
+    static Env createInstance(ServerProcess process) {
         return new EnvImpl(process);
     }
 
@@ -55,14 +57,24 @@ public interface Env {
      *
      * @return the server process
      */
-    @NotNull ServerProcess process();
+    ServerProcess process();
 
     /**
      * Creates a new {@link TestConnection} which can be used in the test environment.
      *
      * @return the created connection
      */
-    @NotNull TestConnection createConnection();
+    default TestConnection createConnection() {
+        return createConnection(new GameProfile(UUID.randomUUID(), "RandName"));
+    }
+
+    /**
+     * Creates a new {@link TestConnection} which can be used in the test environment.
+     *
+     * @param gameProfile the game profile to use for the connection
+     * @return the created connection
+     */
+    TestConnection createConnection(GameProfile gameProfile);
 
     /**
      * Tracks a specific event type in the test environment.
@@ -74,7 +86,7 @@ public interface Env {
      * @param <H>       the handler type
      * @return the {@link Collector} instance to use
      */
-    <E extends Event, H> @NotNull Collector<E> trackEvent(@NotNull Class<E> eventType, @NotNull EventFilter<? super E, H> filter, @NotNull H actor);
+    <E extends Event, H> Collector<E> trackEvent(Class<E> eventType, EventFilter<? super E, H> filter, @NotNull H actor);
 
     /**
      * Listen for a specific event type in the test environment.
@@ -83,7 +95,7 @@ public interface Env {
      * @param <E>       the event type
      * @return the {@link FlexibleListener} instance to use
      */
-    <E extends Event> @NotNull FlexibleListener<E> listen(@NotNull Class<E> eventType);
+    <E extends Event> FlexibleListener<E> listen(Class<E> eventType);
 
     /**
      * Ticks the {@link ServerProcess} which is involved into the env instance.
