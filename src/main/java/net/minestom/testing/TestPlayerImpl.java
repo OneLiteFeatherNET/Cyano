@@ -4,7 +4,6 @@ import net.minestom.server.entity.Player;
 import net.minestom.server.instance.Chunk;
 import net.minestom.server.network.player.GameProfile;
 import net.minestom.server.network.player.PlayerConnection;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * The test environment can't really use a real player for the test.
@@ -21,7 +20,7 @@ public class TestPlayerImpl extends Player {
      * @param playerConnection the player's connection
      * @param gameProfile      the player's game profile
      */
-    public TestPlayerImpl(@NotNull PlayerConnection playerConnection, @NotNull GameProfile gameProfile) {
+    public TestPlayerImpl(PlayerConnection playerConnection, GameProfile gameProfile) {
         super(playerConnection, gameProfile);
     }
 
@@ -31,7 +30,7 @@ public class TestPlayerImpl extends Player {
      * @param chunk the chunk to send
      */
     @Override
-    public void sendChunk(@NotNull Chunk chunk) {
+    public void sendChunk(Chunk chunk) {
         // Send immediately
         sendPacket(chunk.getFullDataPacket());
     }
