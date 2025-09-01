@@ -18,4 +18,7 @@
  *
  * @since 1.5.0
  */
+@NotNullByDefault
 package net.minestom.testing.extension;
+
+import org.jetbrains.annotations.NotNullByDefault;
