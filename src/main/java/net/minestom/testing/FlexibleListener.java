@@ -1,7 +1,6 @@
 package net.minestom.testing;
 
 import net.minestom.server.event.Event;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
@@ -21,7 +20,7 @@ public interface FlexibleListener<E extends Event> {
      *
      * @param handler the consumer to handle the next event
      */
-    void followup(@NotNull Consumer<E> handler);
+    void followup( Consumer<E> handler);
 
     /**
      * Empty followup handler.
