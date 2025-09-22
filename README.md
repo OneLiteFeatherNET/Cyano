@@ -49,6 +49,14 @@ players without specifying spawn coordinates. The system will automatically use 
 Player player = env.createPlayer(instance);
 ```
 
+If you are creating a player via a `TestConnection`, there is also a method which uses a default position:
+
+```java
+// Creates a player that spawns at coordinates (0, 0, 0)
+TestConnection connection = env.createConnection();
+Player player = connection.connect(instance);
+```
+
 This simplification is particularly useful in tests where player positioning is irrelevant to the functionality being
 tested.
 
