@@ -24,6 +24,7 @@ class TestPlayerIntegrationTest {
         assertEquals(instance, player.getInstance(), "Player should be in the created instance");
         assertEquals(Pos.ZERO, player.getPosition(), "Player should start at position (0, 0, 0)");
         assertEquals("RandName", player.getUsername(), "Player should have a random name");
-    }
 
+        env.destroyInstance(instance, true);
+    }
 }
