@@ -5,12 +5,11 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.Event;
 import net.minestom.server.event.EventFilter;
-import net.minestom.server.instance.IChunkLoader;
+import net.minestom.server.instance.ChunkLoader;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.network.player.GameProfile;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
@@ -86,7 +85,7 @@ public interface Env {
      * @param <H>       the handler type
      * @return the {@link Collector} instance to use
      */
-    <E extends Event, H> Collector<E> trackEvent(Class<E> eventType, EventFilter<? super E, H> filter, @NotNull H actor);
+    <E extends Event, H> Collector<E> trackEvent(Class<E> eventType, EventFilter<? super E, H> filter, H actor);
 
     /**
      * Listen for a specific event type in the test environment.
@@ -111,7 +110,7 @@ public interface Env {
      * @param timeout   the maximum duration to wait for the condition to be met, or null for no timeout
      * @return true if the condition was met, false if the timeout was reached
      */
-    default boolean tickWhile(@NotNull BooleanSupplier condition, @Nullable Duration timeout) {
+    default boolean tickWhile(BooleanSupplier condition, @Nullable Duration timeout) {
         var ticker = process().ticker();
         final long start = System.nanoTime();
         while (condition.getAsBoolean()) {
@@ -131,7 +130,7 @@ public interface Env {
      * @param pos      the position to spawn the player at
      * @return the created player
      */
-    default @NotNull Player createPlayer(@NotNull Instance instance, @NotNull Pos pos) {
+    default Player createPlayer(Instance instance, Pos pos) {
         return createConnection().connect(instance, pos);
     }
 
@@ -141,7 +140,7 @@ public interface Env {
      * @param instance the instance to spawn the player in
      * @return the created player
      */
-    default @NotNull Player createPlayer(@NotNull Instance instance) {
+    default Player createPlayer(Instance instance) {
         return createPlayer(instance, Pos.ZERO);
     }
 
@@ -150,7 +149,7 @@ public interface Env {
      *
      * @return the created instance
      */
-    default @NotNull Instance createFlatInstance() {
+    default Instance createFlatInstance() {
         return createFlatInstance(null);
     }
 
@@ -160,7 +159,7 @@ public interface Env {
      * @param chunkLoader the chunk loader to use for the instance
      * @return the created instance
      */
-    default @NotNull Instance createFlatInstance(@Nullable IChunkLoader chunkLoader) {
+    default Instance createFlatInstance(@Nullable ChunkLoader chunkLoader) {
         var instance = process().instance().createInstanceContainer(chunkLoader);
         instance.setGenerator(unit -> unit.modifier().fillHeight(0, 40, Block.STONE));
         return instance;
@@ -168,10 +167,19 @@ public interface Env {
 
     /**
      * Creates a new {@link Instance} which is empty and can be used in the test environment.
+     * @param chunkLoader the chunk loader to use for the instance
+     * @return the created instance
+     */
+    default Instance createEmptyInstance(ChunkLoader chunkLoader) {
+        return process().instance().createInstanceContainer(chunkLoader);
+    }
+
+    /**
+     * Creates a new {@link Instance} which is empty and can be used in the test environment.
      *
      * @return the created instance
      */
-    default @NotNull Instance createEmptyInstance() {
+    default Instance createEmptyInstance() {
         return process().instance().createInstanceContainer();
     }
 
@@ -181,7 +189,7 @@ public interface Env {
      *
      * @param instance the instance to destroy
      */
-    default void destroyInstance(@NotNull Instance instance) {
+    default void destroyInstance(Instance instance) {
         destroyInstance(instance, false);
     }
 
@@ -191,7 +199,7 @@ public interface Env {
      * @param instance       the instance to destroy
      * @param cleanUpPlayers whether to remove players from the instance
      */
-    default void destroyInstance(@NotNull Instance instance, boolean cleanUpPlayers) {
+    default void destroyInstance(Instance instance, boolean cleanUpPlayers) {
         if (cleanUpPlayers && !instance.getPlayers().isEmpty()) {
             instance.getPlayers().forEach(Player::remove);
         }
