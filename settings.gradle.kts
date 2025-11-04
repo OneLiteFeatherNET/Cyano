@@ -8,8 +8,8 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             version("minestom", "2025.10.31-1.21.10")
-            version("junit", "6.0.0")
-            version("junit.platform", "6.0.0")
+            version("junit", "6.0.1")
+            version("junit.platform", "6.0.1")
 
             library("minestom","net.minestom", "minestom").versionRef("minestom")
 
