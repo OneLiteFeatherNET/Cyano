@@ -1,1 +1,10 @@
 # Changelog
+
+## [0.5.8](https://github.com/OneLiteFeatherNET/Cyano/compare/0.5.7...v0.5.8) (2026-05-13)
+
+
+### Features
+
+* **workflows:** migrate to our new workflow preset ([#73](https://github.com/OneLiteFeatherNET/Cyano/issues/73)) ([7cd45b7](https://github.com/OneLiteFeatherNET/Cyano/commit/7cd45b7c9830468f219f1a5ddbc6e97461469dab))
+
+## Changelog
