@@ -5,7 +5,7 @@ import net.minestom.server.event.Event;
 import net.minestom.server.event.EventFilter;
 import net.minestom.server.event.EventListener;
 import net.minestom.server.network.player.GameProfile;
-import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -20,6 +20,8 @@ public final class EnvImpl implements Env {
 
     public EnvImpl(ServerProcess process) {
         this.process = process;
+        // If exceptions reach the exception handler, by default fail the test.
+        process().exception().setExceptionHandler(EnvImpl::handleException);
 
         // Start the dispatcher threads if not already started.
         process().dispatcher().start();
@@ -29,18 +31,22 @@ public final class EnvImpl implements Env {
         process.connection().setPlayerProvider(TestPlayerImpl::new);
     }
 
+    static void handleException(Throwable exception) {
+        Assertions.fail("Server threw exception", exception);
+    }
+
     @Override
     public ServerProcess process() {
         return process;
     }
 
     @Override
-    public TestConnection createConnection(GameProfile profile) {
-        return new TestConnectionImpl(this, profile);
+    public TestConnection createConnection(GameProfile gameProfile) {
+        return new TestConnectionImpl(this, gameProfile);
     }
 
     @Override
-    public <E extends Event, H> Collector<E> trackEvent(Class<E> eventType, EventFilter<? super E, H> filter, @NotNull H actor) {
+    public <E extends Event, H> Collector<E> trackEvent(Class<E> eventType, EventFilter<? super E, H> filter, H actor) {
         var tracker = new EventCollector<E>(actor);
         this.process.eventHandler().map(actor, filter).addListener(eventType, tracker.events::add);
         return tracker;

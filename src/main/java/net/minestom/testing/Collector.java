@@ -30,7 +30,7 @@ public interface Collector<T> {
      *
      * @return a list of elements collected by this collector
      */
-    @NotNull List<@NotNull T> collect();
+    List<T> collect();
 
     /**
      * Assert a single element from the collection, check its type, and apply a consumer to it.
@@ -67,6 +67,18 @@ public interface Collector<T> {
     default void assertCount(int count) {
         List<T> elements = collect();
         assertEquals(count, elements.size(), "Expected " + count + " element(s), got " + elements.size() + ": " + elements);
+    }
+
+    /**
+     * Assert the count of elements matching a predicate in the collector.
+     *
+     * @param count     expected number of elements matching the predicate
+     * @param predicate to match elements
+     */
+    default void assertCount(int count, Predicate<? super T> predicate) {
+        List<T> elements = collect();
+        long matchingCount = elements.stream().filter(predicate).count();
+        assertEquals(count, matchingCount, "Expected " + count + " element(s) matching the predicate, got " + matchingCount + ": " + elements);
     }
 
     /**
