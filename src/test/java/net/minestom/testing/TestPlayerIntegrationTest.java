@@ -15,6 +15,7 @@ class TestPlayerIntegrationTest {
 
     @Test
     void testCustomPlayerCreation(@NotNull Env env) {
+        env.process().connection().setPlayerProvider(TestPlayerImpl::new);
         Instance instance = env.createFlatInstance();
         assertNotNull(instance);
         Player player = env.createPlayer(instance);
