@@ -7,7 +7,6 @@ import net.minestom.server.adventure.MinestomAdventure;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.player.AsyncPlayerConfigurationEvent;
-import net.minestom.server.instance.Chunk;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.network.ConnectionState;
 import net.minestom.server.network.packet.server.SendablePacket;
@@ -127,18 +126,6 @@ final class TestConnectionImpl implements TestConnection {
         public List<T> collect() {
             incomingTrackers.remove(this);
             return List.copyOf(packets);
-        }
-    }
-
-    static final class TestPlayerImpl extends Player {
-        public TestPlayerImpl(PlayerConnection playerConnection, GameProfile gameProfile) {
-            super(playerConnection, gameProfile);
-        }
-
-        @Override
-        public void sendChunk(Chunk chunk) {
-            // Send immediately
-            sendPacket(chunk.getFullDataPacket());
         }
     }
 }
