@@ -3,6 +3,5 @@
   "extends": [
     "github>OneLiteFeatherNET/renovate:default(OneLiteFeatherNET/aves-maintainers)",
     "github>OneLiteFeatherNET/renovate:minestom",
-    ":semanticCommitsDisabled"
   ]
 }
