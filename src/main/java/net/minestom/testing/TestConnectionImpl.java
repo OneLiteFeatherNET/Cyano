@@ -1,11 +1,13 @@
 package net.minestom.testing;
 
 import net.kyori.adventure.translation.GlobalTranslator;
+import net.minestom.server.ServerFlag;
 import net.minestom.server.ServerProcess;
 import net.minestom.server.adventure.MinestomAdventure;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.player.AsyncPlayerConfigurationEvent;
+import net.minestom.server.instance.Chunk;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.network.ConnectionState;
 import net.minestom.server.network.packet.server.SendablePacket;
@@ -89,7 +91,7 @@ final class TestConnectionImpl implements TestConnection {
             final Player player = getPlayer();
             if (player == null) return serverPacket;
 
-            if (MinestomAdventure.AUTOMATIC_COMPONENT_TRANSLATION && serverPacket instanceof ServerPacket.ComponentHolding) {
+            if (ServerFlag.AUTOMATIC_COMPONENT_TRANSLATION && serverPacket instanceof ServerPacket.ComponentHolding) {
                 serverPacket = ((ServerPacket.ComponentHolding) serverPacket).copyWithOperator(component ->
                         GlobalTranslator.render(component, Objects.requireNonNullElseGet(player.getLocale(), MinestomAdventure::getDefaultLocale)));
             }
@@ -125,6 +127,18 @@ final class TestConnectionImpl implements TestConnection {
         public List<T> collect() {
             incomingTrackers.remove(this);
             return List.copyOf(packets);
+        }
+    }
+
+    static final class TestPlayerImpl extends Player {
+        public TestPlayerImpl(PlayerConnection playerConnection, GameProfile gameProfile) {
+            super(playerConnection, gameProfile);
+        }
+
+        @Override
+        public void sendChunk(Chunk chunk) {
+            // Send immediately
+            sendPacket(chunk.getFullDataPacket());
         }
     }
 }
