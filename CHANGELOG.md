@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.10](https://github.com/OneLiteFeatherNET/Cyano/compare/v0.5.9...v0.5.10) (2026-05-23)
+
+
+### Bug Fixes
+
+* **deps:** update junit-framework monorepo to v6.1.0 ([#80](https://github.com/OneLiteFeatherNET/Cyano/issues/80)) ([944be03](https://github.com/OneLiteFeatherNET/Cyano/commit/944be035a9703ffe144f7d2cdd1c809970600e54))
+
 ## [0.5.9](https://github.com/OneLiteFeatherNET/Cyano/compare/v0.5.8...v0.5.9) (2026-05-17)
 
 
