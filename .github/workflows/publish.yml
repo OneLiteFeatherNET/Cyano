@@ -1,10 +1,24 @@
 name: Publish JAR
+
 on:
   push:
-    tags: ["**"]
-  workflow_dispatch:
-
+    tags:
+      - '**'
 jobs:
-  publish:
-    uses: OneLiteFeatherNET/workflows/.github/workflows/gradle-publish.yml@v2.1.0
-    secrets: inherit
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ONELITEFEATHER_MAVEN_USERNAME: ${{ secrets.ONELITEFEATHER_MAVEN_USERNAME }}
+      ONELITEFEATHER_MAVEN_PASSWORD: ${{ secrets.ONELITEFEATHER_MAVEN_PASSWORD }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Set up JDK 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '25'
+      - name: Build with Gradle
+        run: ./gradlew build
+      - name: Publish to Maven
+        run: ./gradlew publish
