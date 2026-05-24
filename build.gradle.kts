@@ -16,7 +16,7 @@ java {
 }
 
 dependencies {
-    api(libs.minestom)
+    implementation(libs.minestom)
     compileOnly(libs.junit.params)
     compileOnly(libs.junit.api)
 
