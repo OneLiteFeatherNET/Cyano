@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.2](https://github.com/OneLiteFeatherNET/Cyano/compare/v0.7.1...0.7.2) (2026-07-23)
+
+
+### Bug Fixes
+
+* **build:** add missing //x-release-please-verison prefix ([1bf6746](https://github.com/OneLiteFeatherNET/Cyano/commit/1bf674676e5beebbe1192c226ec7bbcd315f7b27))
+
 ## [0.7.1](https://github.com/OneLiteFeatherNET/Cyano/compare/0.7.0...v0.7.1) (2026-07-23)
 
 
