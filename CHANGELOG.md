@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/OneLiteFeatherNET/Cyano/compare/0.7.0...v0.7.1) (2026-07-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency net.minestom:minestom to v2026.07.22-26.2 ([#92](https://github.com/OneLiteFeatherNET/Cyano/issues/92)) ([99edc2d](https://github.com/OneLiteFeatherNET/Cyano/commit/99edc2d37a71c23ca032364a67603aa061ae135f))
+
 ## [0.5.10](https://github.com/OneLiteFeatherNET/Cyano/compare/v0.5.9...v0.5.10) (2026-05-23)
 
 
