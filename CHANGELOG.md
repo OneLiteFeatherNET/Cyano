@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.3](https://github.com/OneLiteFeatherNET/Cyano/compare/0.7.2...0.7.3) (2026-08-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency net.minestom:minestom to v2026.08.07-26.2 ([#99](https://github.com/OneLiteFeatherNET/Cyano/issues/99)) ([61c4721](https://github.com/OneLiteFeatherNET/Cyano/commit/61c4721663ab8a95c2a3713ad5b5445f75c4652e))
+* **deps:** update junit-framework monorepo to v6.1.3 ([#98](https://github.com/OneLiteFeatherNET/Cyano/issues/98)) ([63f55e5](https://github.com/OneLiteFeatherNET/Cyano/commit/63f55e5f8c2b9fdea8bd2f6c81fdd9b95c51898d))
+
 ## [0.7.2](https://github.com/OneLiteFeatherNET/Cyano/compare/v0.7.1...0.7.2) (2026-07-23)
 
 
