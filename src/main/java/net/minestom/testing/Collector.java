@@ -1,7 +1,5 @@
 package net.minestom.testing;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -39,12 +37,12 @@ public interface Collector<T> {
      * @param consumer the consumer to apply to the single element
      * @param <P>      the type of the single element
      */
+    @SuppressWarnings("unchecked")
     default <P extends T> void assertSingle(Class<P> type, Consumer<P> consumer) {
         List<T> elements = collect();
         assertEquals(1, elements.size(), "Expected 1 element, got " + elements);
         var element = elements.getFirst();
         assertInstanceOf(type, element, "Expected type " + type.getSimpleName() + ", got " + element.getClass().getSimpleName());
-        //noinspection unchecked
         consumer.accept((P) element);
     }
 
@@ -93,6 +91,14 @@ public interface Collector<T> {
      */
     default void assertEmpty() {
         assertCount(0);
+    }
+
+    /**
+     * Assert that the collector contains at least one element.
+     */
+    default void assertAny() {
+        List<T> elements = collect();
+        assertFalse(elements.isEmpty(), "Expected at least 1 element, got none.");
     }
 
     /**

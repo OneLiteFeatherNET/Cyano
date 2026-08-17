@@ -5,12 +5,22 @@ import net.minestom.server.adventure.MinestomAdventure;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.net.ServerSocket;
 import java.util.Collection;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public final class TestUtils {
+
+    public static int findFreePort() {
+        try (var socket = new ServerSocket(0)) {
+            return socket.getLocalPort();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void waitUntilCleared(WeakReference<?> ref) {
         final int maxTries = 100;
 
