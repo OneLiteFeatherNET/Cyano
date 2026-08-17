@@ -55,10 +55,10 @@ publishing {
                 }
             }
             name = "OneLiteFeatherRepository"
-            url = if (project.version.toString().contains("SNAPSHOT")) {
-                uri("https://repo.onelitefeather.dev/onelitefeather-snapshots")
+            url = if (version.toString().endsWith("SNAPSHOT")) {
+                uri("https://repo.onelitefeather.dev/snapshots")
             } else {
-                uri("https://repo.onelitefeather.dev/onelitefeather-releases")
+                uri("https://repo.onelitefeather.dev/releases")
             }
         }
     }
