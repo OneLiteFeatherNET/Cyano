@@ -16,7 +16,22 @@ repository.
 
 ## Getting Started
 
-To use Cyano in your tests, you'll need to include it through your build system and use the appropriate annotation.
+The library isn't published to Maven Central, so you'll need to add our repository first.
+
+```gradle
+maven("https://repo.onelitefeather.dev/releases")
+```
+
+If you need a snapshot version, replace `releases` with `snapshots`.
+
+After that, you can add the dependency to your project:
+
+```gradle
+testImplementation("net.onelitefeather:cyano:<version>")
+```
+
+> [!NOTE]
+> Only releases starting with `0.7.4` are available through the public repository. Earlier versions aren't publicly available.
 
 ### Basic Test Setup
 
