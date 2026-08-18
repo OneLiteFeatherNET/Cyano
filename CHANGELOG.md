@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.4](https://github.com/OneLiteFeatherNET/Cyano/compare/0.7.3...0.7.4) (2026-08-18)
+
+
+### Bug Fixes
+
+* align project with upstream ([#105](https://github.com/OneLiteFeatherNET/Cyano/issues/105)) ([863e759](https://github.com/OneLiteFeatherNET/Cyano/commit/863e759d71a13d6573267355a49cd72722bf623a))
+* **deps:** update dependency net.minestom:minestom to v2026.08.16-26.2 ([#107](https://github.com/OneLiteFeatherNET/Cyano/issues/107)) ([eedf625](https://github.com/OneLiteFeatherNET/Cyano/commit/eedf62565a7e9dd8ff7ab77c9d1dc5f50e66ef3e))
+
 ## [0.7.3](https://github.com/OneLiteFeatherNET/Cyano/compare/0.7.2...0.7.3) (2026-08-08)
 
 
