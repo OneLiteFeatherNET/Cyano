@@ -7,7 +7,7 @@ dependencyResolutionManagement {
 
     versionCatalogs {
         create("libs") {
-            version("minestom", "2026.08.16-26.2")
+            version("minestom", "2026.08.28-26.2")
             version("junit", "6.1.3")
 
             library("minestom","net.minestom", "minestom").versionRef("minestom")
